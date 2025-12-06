@@ -1,0 +1,181 @@
+{
+    "test_cases": [
+        {
+            "name": "Invoice - Business Invoice Extraction",
+            "file": "invoice_sample_001.png",
+            "ai_model": "gemini",
+            "extraction_type": "reference",
+            "reference_values": {
+                "invoice_number": "Invoice Number",
+                "date": "Date",
+                "due_date": "Due Date",
+                "bill_to": "Bill To",
+                "subtotal": "Subtotal",
+                "tax": "Tax",
+                "total": "Total"
+            },
+            "expected_fields": [
+                "invoice_number",
+                "date",
+                "total"
+            ]
+        },
+        {
+            "name": "Invoice - Freelance Invoice with Discount",
+            "file": "invoice_sample_002.png",
+            "ai_model": "claude",
+            "extraction_type": "reference",
+            "reference_values": {
+                "invoice_number": "Invoice",
+                "date": "Date",
+                "client": "Client",
+                "subtotal": "Subtotal",
+                "discount": "Discount",
+                "total": "Total"
+            },
+            "expected_fields": [
+                "invoice_number",
+                "total",
+                "discount"
+            ]
+        },
+        {
+            "name": "Receipt - Retail Store Items",
+            "file": "receipt_sample_001.png",
+            "ai_model": "gemini",
+            "extraction_type": "instruction",
+            "instructions": "Extract all purchased items with their prices, the subtotal, tax, and total amount",
+            "expected_fields": [
+                "items",
+                "subtotal",
+                "tax",
+                "total"
+            ]
+        },
+        {
+            "name": "Receipt - Restaurant Bill",
+            "file": "receipt_restaurant_001.png",
+            "ai_model": "claude",
+            "extraction_type": "instruction",
+            "instructions": "Extract the restaurant name, all food and drink items with prices, subtotal, tax, tip, and total",
+            "expected_fields": [
+                "restaurant_name",
+                "items",
+                "subtotal",
+                "tax",
+                "tip",
+                "total"
+            ]
+        },
+        {
+            "name": "Receipt - Gas Station",
+            "file": "receipt_gas_station.png",
+            "ai_model": "gemini",
+            "extraction_type": "reference",
+            "reference_values": {
+                "receipt_number": "Receipt",
+                "date": "Date",
+                "fuel_type": "Fuel",
+                "gallons": "Gallons",
+                "price_per_gallon": "Price per Gallon",
+                "total": "Total"
+            },
+            "expected_fields": [
+                "fuel_type",
+                "gallons",
+                "total"
+            ]
+        },
+        {
+            "name": "Business Card - Tech Professional",
+            "file": "business_card_001.png",
+            "ai_model": "gemini",
+            "extraction_type": "reference",
+            "reference_values": {
+                "name": "Name",
+                "title": "Title",
+                "company": "Company",
+                "email": "Email",
+                "phone": "Phone",
+                "website": "Website",
+                "address": "Address"
+            },
+            "expected_fields": [
+                "name",
+                "email",
+                "phone",
+                "company"
+            ]
+        },
+        {
+            "name": "Business Card - Creative Professional",
+            "file": "business_card_002.png",
+            "ai_model": "claude",
+            "extraction_type": "instruction",
+            "instructions": "Extract the person's name, job title, company name, email, phone number, website, and address",
+            "expected_fields": [
+                "name",
+                "title",
+                "company",
+                "email",
+                "phone"
+            ]
+        },
+        {
+            "name": "Form - Customer Registration",
+            "file": "form_sample_001.png",
+            "ai_model": "gemini",
+            "extraction_type": "instruction",
+            "instructions": "Extract all form fields including full name, email, phone, date of birth, complete address, and checkbox selections",
+            "expected_fields": [
+                "full_name",
+                "email",
+                "phone",
+                "address",
+                "city",
+                "state",
+                "zip"
+            ]
+        },
+        {
+            "name": "Medical Invoice - Healthcare Bill",
+            "file": "invoice_medical_001.png",
+            "ai_model": "claude",
+            "extraction_type": "reference",
+            "reference_values": {
+                "patient_name": "Patient Name",
+                "patient_id": "Patient ID",
+                "date_of_service": "Date of Service",
+                "insurance": "Insurance",
+                "subtotal": "Subtotal",
+                "insurance_coverage": "Insurance Coverage",
+                "patient_responsibility": "Patient Responsibility"
+            },
+            "expected_fields": [
+                "patient_name",
+                "patient_id",
+                "patient_responsibility"
+            ]
+        },
+        {
+            "name": "Utility Bill - Electric Bill",
+            "file": "bill_utility_001.png",
+            "ai_model": "gemini",
+            "extraction_type": "reference",
+            "reference_values": {
+                "account_number": "Account Number",
+                "customer_name": "Customer Name",
+                "service_address": "Service Address",
+                "billing_period": "Billing Period",
+                "due_date": "Due Date",
+                "usage": "Usage",
+                "total_amount_due": "Total Amount Due"
+            },
+            "expected_fields": [
+                "account_number",
+                "usage",
+                "total_amount_due"
+            ]
+        }
+    ]
+}

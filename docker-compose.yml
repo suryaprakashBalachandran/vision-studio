@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  vision-studio:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - CLAUDE_API_KEY=${CLAUDE_API_KEY}
+      - MAX_FILE_SIZE=${MAX_FILE_SIZE:-104857600}
+      - MAX_PDF_PAGES=${MAX_PDF_PAGES:-50}
+    volumes:
+      - ./app:/app/app
+      - temp_files:/tmp/vision-studio
+    restart: unless-stopped
+
+volumes:
+  temp_files:
